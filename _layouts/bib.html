@@ -80,6 +80,13 @@
       <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" target="_blank">PDF</a>
       {% endif %}
     {% endif %}
+    {% if entry.data %}
+      {% if entry.data contains '://' %}
+      <a href="{{ entry.data }}" class="btn btn-sm z-depth-0" role="button" target="_blank">Data</a>
+      {% else %}
+      <a href="{{ entry.data | prepend: '/assets/data/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" target="_blank">Data</a>
+      {% endif %}
+    {% endif %}
     {% if entry.supp %}
       {% if entry.supp contains '://' %}
       <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button" target="_blank">Supp</a>

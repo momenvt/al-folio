@@ -2,11 +2,10 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Workin in progress.
-nav: false
+description: This is a collection of research and class projects I am either working on or completed.
+nav: true
 ---
 
-{% comment %}
 <div class="projects grid">
   {% assign sorted_projects = site.projects | sort: "importance" %}
   {% for project in sorted_projects %}
@@ -21,9 +20,10 @@ nav: false
         <img src="{{ project.img | relative_url }}" alt="project thumbnail">
         {% endif %}
         <div class="card-body">
-          <h2 class="card-title text-lowercase">{{ project.title }}</h2>
+          <h2 class="card-title">{{ project.title }}</h2>
           <p class="card-text">{{ project.description }}</p>
           <div class="row ml-1 mr-1 p-0">
+            <div class="col-4">
             {% if project.github %}
             <div class="github-icon">
               <div class="icon" data-toggle="tooltip" title="Code Repository">
@@ -37,6 +37,23 @@ nav: false
               {% endif %}
             </div>
             {% endif %}
+            {% if project.bitbucket %}
+              <div class="github-icon">
+                <div class="icon" data-toggle="tooltip" title="Code Repository">
+                  <a href="{{ project.bitbucket }}" target="_blank"><i class="fab fa-bitbucket gh-icon"></i></a>
+                </div>
+              </div>
+            {% endif %}
+            </div>
+            <div class="col-8">
+            {% for tag in project.tags %}
+              <div class="github-icon float-right">
+                <div class="icon" data-toggle="tooltip" title="{{ tag }}">
+                  <i class="fab devicon-{{ tag }}-plain colored"></i>
+                </div>
+              </div>
+            {% endfor %}
+            </div>
           </div>
         </div>
       </div>
@@ -45,4 +62,3 @@ nav: false
 {% endfor %}
 
 </div>
-{% endcomment %}
